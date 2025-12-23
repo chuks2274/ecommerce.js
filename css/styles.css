@@ -1,0 +1,462 @@
+/* ===========================
+   GENERAL RESET / BODY
+=========================== */
+body {
+    background-color: #5991c9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===========================
+   NAVBAR & CART
+=========================== */
+.navbar {
+    background-color: #665e5e;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.navbar-brand:hover{
+    color: #007bff; 
+}
+
+.navbar .badge {
+    font-size: 0.7rem;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff;
+}
+
+/* Correct behavior — collapse pushes content down */
+.navbar-collapse {
+    position: static !important;
+    background-color: inherit;
+}
+
+#cart-btn {
+    min-width: 48px;
+    position: relative;
+}
+
+#cart-count {
+    padding-top: 5px;
+}
+
+/* ===========================
+   CART MESSAGE BELOW ICON
+=========================== */
+#cart-message {
+    position: absolute;
+    top: 3.75rem;
+    right: 0;
+    z-index: 1050;
+    min-width: 180px;
+    text-align: center;
+}
+
+#cart-message .alert {
+    margin: 0;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    border-radius: 0.25rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#cart-message.show .alert {
+    opacity: 1;
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+.btn,
+#btn-login-state {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.9rem;
+}
+
+.btn-custom-size,
+.btn-add,
+#place-order-btn {
+    min-height: 40px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.95rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 6px;
+    width: auto !important;
+}
+
+.btn-add[disabled] {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.card-body,
+.checkout-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ===========================
+   STORE PAGE
+=========================== */
+.card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.card-title {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-body p {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ===========================
+   CHECKOUT PAGE
+=========================== */
+.checkout-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.checkout-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+    background-color: #fff;
+    transition: box-shadow 0.2s;
+}
+
+.checkout-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.checkout-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.item-info {
+    font-size: 0.95rem;
+    max-width: 250px;
+}
+
+.item-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.item-price,
+.item-total {
+    font-weight: bold;
+    color: #212529;
+}
+
+.checkout-item .btn-sm,
+.d-flex.align-items-center.gap-2 span.fw-bold {
+    min-height: 30px;
+    padding: 0 8px;
+    font-size: 0.85rem;
+}
+
+.checkout-summary {
+    max-width: 400px;
+    margin: 1rem auto 0;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.checkout-summary h5 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.checkout-summary p {
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+}
+
+.list-group-item img {
+    border-radius: 4px;
+}
+
+/* ===========================
+   MESSAGES
+=========================== */
+.alert {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 768px) {
+    .checkout-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .checkout-item > .d-flex {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .checkout-summary {
+        width: 100%;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .list-group-item.flex-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .d-flex.align-items-center.gap-2.mt-2.mt-md-0 {
+        margin-top: 0.5rem !important;
+    }
+}
+
+/* ===========================
+   MODERN SCROLLBAR
+=========================== */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0,0,0,0.5);
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,0,0,0.3) transparent;
+}
+
+/* ===========================
+   HOME PAGE
+=========================== */
+#home {
+    background-image: url('../image/pic.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.home-hero {
+    color: #111;
+    text-shadow: 0 1px 3px rgba(255,255,255,0.6);
+    margin-top: 100px;
+}
+
+.home-hero h1 {
+    font-weight: 700;
+}
+
+.home-hero p {
+    font-size: 1.2rem;
+}
+
+.home-hero a.btn {
+    font-size: 1.1rem;
+    padding: 10px 25px;
+}
+
+/* ===========================
+   CHECKOUT CONTAINER
+=========================== */
+#checkout-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ===========================
+   PROFILE PAGE
+=========================== */
+.profile-card {
+    max-width: 500px;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.profile-icon {
+    font-size: 4rem;
+    color: #0d6efd;
+}
+
+.btn-group-profile {
+    display: flex;
+    justify-content: space-between;
+    gap: 4%;
+}
+
+.btn-update,
+.btn-delete {
+    width: 48%;
+    padding: 0.6rem 0;
+    font-weight: 500;
+}
+
+.btn .spinner-border {
+    display: none;
+    width: 1rem;
+    height: 1rem;
+    margin-left: 0.5rem;
+}
+
+/* ===========================
+   FLOATING MESSAGE
+=========================== */
+.floating-message {
+    position: fixed;
+    top: 56px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #d1e7dd;
+    color: #0f5132;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    z-index: 1050;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    transition: opacity 0.3s ease;
+}
+
+.floating-message.show {
+    display: block;
+    opacity: 1;
+}
+
+.floating-message.d-none {
+    display: none;
+    opacity: 0;
+}
+
+.bg-dark-gray {
+    background-color: #333 !important;
+}
+
+
+/* Make cart icon white */
+#nav-cart .bi-cart {
+    color: #fff;  /* white */
+    transition: color 0.2s ease;
+}
+
+/* Cart icon hover turns blue */
+#nav-cart .nav-link:hover .bi-cart {
+    color: #007bff;   
+}
+
+.navbar-dark #nav-welcome {
+    color: #fff;
+}
+
+
+
+
+
+/* Floating message base */
+#floating-message {
+    padding: 12px 18px;
+    border-radius: 6px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 9999;
+}
+
+/* When visible */
+#floating-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Success style */
+.message-success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+/* Danger style */
+.message-danger {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+/* Info style */
+.message-info {
+    background-color: #cff4fc;
+    color: #055160;
+}
+
+
+.navbar-brand img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    display: block;
+    border-radius: 50%;
+}
+
+.form-control{
+    resize: none;
+}
+
+

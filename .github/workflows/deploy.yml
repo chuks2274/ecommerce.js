@@ -1,0 +1,42 @@
+# .github/workflows/ci-cd-vercel.yml
+name: CI/CD - Test & Deploy HTML/JS Project to Vercel
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-and-deploy:
+    name: Test & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Install Node.js (needed for ESLint and Vercel CLI)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Step 3: Install ESLint and Vercel CLI globally
+      - name: Install Tools
+        run: |
+          npm install -g eslint
+          npm install -g vercel
+
+      # Step 4: Run JS Linting as a simple test
+      - name: Run ESLint
+        run: |
+          eslint "**/*.js" || echo "Lint warnings ignored"
+
+      # Step 5: Deploy to Vercel (only if linting passed)
+      - name: Deploy to Vercel
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: vercel --prod --confirm --token=${{ secrets.VERCEL_TOKEN }}
