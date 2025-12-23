@@ -91,5 +91,5 @@ NYStore is a responsive eCommerce web application that allows users to browse pr
 
 1. **Clone the repository**  
 ```bash
-git clone <repository-url>
-cd <repository-folder>
+git clone https://github.com/chuks2274/ecommerce.js.git
+cd ecommerce.js
