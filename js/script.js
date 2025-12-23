@@ -203,28 +203,23 @@ async function loadStoreProducts() {
         productListEl.innerHTML = '';
 
         const row = document.createElement('div');
-        row.className = 'row g-4';
+        row.className = 'row g-4 justify-content-center'; // center the cards
 
         products.forEach(product => {
             const shortDescription = truncateText(product.description, 100);
 
             const col = document.createElement('div');
-            col.className = 'col-12 col-md-6 col-lg-3';
+            col.className = 'col-12 col-sm-10 col-md-6 col-lg-3'; // col-sm-10 adds space on mobile
             col.innerHTML = `
                 <div class="card h-100 shadow-sm">
-                    <img src="${product.image}" class="card-img-top"
-                         style="height:200px; object-fit:contain">
+                    <img src="${product.image}" class="card-img-top" style="height:200px; object-fit:contain">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">${product.title}</h5>
-
-                        <p class="card-text mb-2 text-truncate-4"
-                           title="${product.description}">
-                           ${shortDescription}
+                        <p class="card-text mb-2 text-truncate-4" title="${product.description}">
+                            ${shortDescription}
                         </p>
-
-                        <p class="fw-bold mt-auto">$${product.price.toFixed(2)}</p>
-                        <button class="btn btn-primary w-100 btn-add"
-                                data-id="${product.id}">
+                        <p class="card-text fw-bold mt-auto">$${product.price.toFixed(2)}</p>
+                        <button class="btn btn-primary w-100 btn-add" data-id="${product.id}">
                             Add to Cart
                         </button>
                     </div>
@@ -238,7 +233,6 @@ async function loadStoreProducts() {
         const user = getCurrentUser();
         productListEl.querySelectorAll('.btn-add').forEach(btn => {
             btn.disabled = !user;
-
             btn.addEventListener('click', async () => {
                 const id = Number(btn.dataset.id);
                 const { data } = await axios.get(`${API_BASE}/products/${id}`);
@@ -248,8 +242,7 @@ async function loadStoreProducts() {
 
     } catch (error) {
         console.error(error);
-        productListEl.innerHTML =
-            `<div class="alert alert-danger">Failed to load products.</div>`;
+        productListEl.innerHTML = `<div class="alert alert-danger">Failed to load products.</div>`;
     }
 }
 
@@ -275,7 +268,7 @@ function renderCheckout() {
 
     checkoutEl.innerHTML = '';
     const row = document.createElement('div');
-    row.className = 'row g-4';
+    row.className = 'row g-4 justify-content-center'; // Center cards on mobile
 
     cart.forEach(item => {
         const shortDescription = truncateText(item.description, 100);
@@ -302,7 +295,7 @@ function renderCheckout() {
                         <div>
                             <button class="btn btn-outline-secondary btn-sm qty-decrease"
                                     data-id="${item.id}">−</button>
-                            <span class="fw-bold">${item.qty}</span>
+                            <span class="fw-bold mx-1">${item.qty}</span>
                             <button class="btn btn-outline-secondary btn-sm qty-increase"
                                     data-id="${item.id}">+</button>
                         </div>
@@ -319,7 +312,7 @@ function renderCheckout() {
 
     checkoutEl.appendChild(row);
 
-    // Quantity + remove handlers
+    // Quantity and remove handlers
     checkoutEl.querySelectorAll('.qty-increase, .qty-decrease, .remove-btn')
         .forEach(btn => {
             btn.addEventListener('click', () => {
@@ -362,7 +355,6 @@ function renderCheckout() {
         setTimeout(() => navigateTo('store.html'), 1500);
     });
 }
-
 
 /* =====================================================================
    GLOBAL EVENT LISTENERS
